@@ -1,0 +1,21 @@
+{
+  "name": "wenprise/pinyin-slug",
+  "description": "beautify WordPress email template by use html email.",
+  "require": {
+    "php": ">=5.6",
+    "tijsverkoyen/css-to-inline-styles": "^2.2",
+    "wenprise/template-render": "^0.2.0@beta"
+  },
+  "autoload": {
+    "psr-4": {
+    }
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Amos Lee",
+      "email": "iwillhappy1314@gmail.com"
+    }
+  ],
+  "minimum-stability": "beta"
+}
