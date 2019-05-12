@@ -57,6 +57,9 @@ if [ -e "bin/build.sh" ]; then
 	bash bin/build.sh
 fi
 
+ls BUILT_DIR
+ls BUILT_DIR/svn
+ls BUILT_DIR/git
 
 #####################################################
 # 获取 Git 中的插件版本
