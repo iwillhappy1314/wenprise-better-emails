@@ -8,7 +8,7 @@ Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-美化 WordPress 评论审核通知邮件，评论回复通知邮件。
+美化 WordPress 评论审核通知邮件，评论回复通知邮件，支持订阅和退订。
 
 == Description ==
 
