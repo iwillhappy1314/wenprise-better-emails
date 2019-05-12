@@ -21,11 +21,12 @@ env:
   matrix:
     - WP_VERSION=latest WP_MULTISITE=0
   global:
-    - PLUGIN_SLUG=wenprise-pinyin-slug
+    - PLUGIN_SLUG=wenprise-better-emails
     - SVN_REPO=https://plugins.svn.wordpress.org/$PLUGIN_SLUG/
     - GIT_REPO=https://github.com/iwillhappy1314/$PLUGIN_SLUG.git
     - MAINFILE="$PLUGIN_SLUG.php"
-    - secure: "d8nwhiA50gLTeVfcydeZcnQDljFl9Jshdi4dRWbfWvy3vCXNK+DNyksqsRPrBsSYYydwHCg9hYPM5Z9sHe9jeSmwiTx6HU4mOmJaFcssU3Kfiadtuw/aZojI5RpxxYf5rZQNtFf/RqsW673MuHT15AmzzJEF+dFK+6RVugMQk3FPlM7pI4ucoD26fCjUpGrQBgrmeAa4fEPQH+fFtZavGxC72JlSygVHDCOhdz/d6OFbpcxJyEznMjhLjE9pUW/V9t+LQHbrU1c+NJmlM/kej1nahaT1+hqe7u8vEyN4EYsDY7eYoJFg6Gjq/1vkLw4i2UKMaJ+oBh41dSZsISJyGfou99IJEMtwTN5gmjGoe6t0uO0tuvyzR+NptMeGcGpabHeUhnxzZZk+wFLBFtiWAKMzn9iGdFJvEugYRhq5/52rMVKR52C5VlPRqfsCJg4KuRr2huHjDMh6M5rrTGkN5fc6/ZAueOQ6Xqw8+ygBvCDpMcJSID8dmFISLb5k2RoNrQm5plg1ZrPJG/v0AHS/NK5WBMYFMReH7RAfFwmXBkNO6X3NxO3WhW4Fv6Xl5tmTkC/LWYU+/ApkGKO8ssn/CILC9cZ+2CIaWnk3e1XX80+xQu23rERuyg6qCO6/MawRqAFfun7sAaI6VfqkQ/wImCUxrEkrdZdGk5OF169pPEQ="
+    - secure: "rsEpKhix0+EFIXOn/EOVEf2KeDiW0/t68IuodhSDVix6uGzyHTPP0jL+WvLBbIU/tvY+UAgVQhUlBJjAEF1kF8QxSuCdVz/DnjhxGpMIFl1PSqGrwyirvOTHvbQx3UzCod4zPns76JS6pGHQtzlxaxC3gWNdbffhgppWY8veLrC1kIgEAlRVV23i7quHTPpsKdLjmu1CMkpG6M5PCnN2WYgH6RYerejYwbbThdpojRv8AJlIWw+QoaNWVib5A3lUxl6ut4a7xw5AyhB0vm6qwFfs1kLms2tfz113NWEIXNdq3llNmULs8E30tXbXSUc4EnX78FcM+GtxMSKezBbpCWts/0IZxDf8hqNmGDXjLJoGXVlOCo2Bn12fFKVv0bpIxFlQ+7cqH9fUj/KGmSjN0LHWiDKlBWaDSj3Hj/caqdvJqIsyYaGKxlmxMIVcaCKSjyJjKWzjQnraYvKscvlz1dG3JRtCREh8lZDXwFs+CgUk5+wN9K94s93RdNpxFNsYMUoveUhZT2Jdfxv8XLaT940XJELjYsgaCf1D7/ZWCVLp3tbqgFwZxpk2UkdR2hw4G/7jzrpchgBI9nCV2B/Z0z0sFSwP+8VCowAVDtOeSGm7G8NDxMOlHiZW/iwTV2TDgJLV+mO8bi7Xz6oQosEbtRmoLLUlxysJytmB9yv3T2Y="
+
 
 matrix:
   include:
@@ -63,5 +64,4 @@ script:
       phpcs
     fi
 
-after_success:
-  - bash bin/deploy.sh
+after_success: curl -L https://raw.githubusercontent.com/iwillhappy1314/deploy2wporg/master/deploy.sh
