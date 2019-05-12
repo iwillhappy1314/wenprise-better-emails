@@ -2,9 +2,9 @@
 Contributors: iwillhappy1314
 Donate link: https://www.wpzhiku.com/
 Tags: Email template, Email, 邮件模版
-Requires at least: 3.4
-Tested up to: 4.9
-Stable tag: 1.0
+Requires at least: 4.7
+Tested up to: 5.1
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -36,6 +36,10 @@ Wenprise Better Emails 插件使用了 HTML 邮件的方式，美化了 WordPres
 3. 评论有回复时，通知评论者的邮件。
 
 == Changelog ==
+
+= 1.1 =
+* Bugfix
+* 添加订阅评论回复功能，支持取消订阅
 
 = 1.0 =
 * 第一个版本，支持美化评论审核邮件，评论通知作者的邮件
