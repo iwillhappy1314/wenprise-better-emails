@@ -57,8 +57,6 @@ if [ -e "bin/build.sh" ]; then
 	bash bin/build.sh
 fi
 
-ls $BUILT_DIR
-ls $BUILT_DIR/svn -la
 
 #####################################################
 # 获取 Git 中的插件版本
@@ -78,7 +76,7 @@ if [[ $TRAVIS_TAG ]]; then
     rsync -a --exclude=".svn" --checksum --delete ./git/ ./svn/trunk/
 else
     cp ./git/readme.txt ./svn/trunk/ -f
-    cp ./git/assets/* ./svn/assets/ -Rf
+    cp ./git/assets/ ./svn/assets/ -Rf
 fi
 
 # 同步完成后、移除 svn trunk 中的 .git 目录
@@ -94,13 +92,14 @@ cd $BUILT_DIR/svn/trunk
 if [ -e ".svnignore" ]; then
     echo "svn propset form .svnignore"
     svn propset -q -R svn:ignore -F .svnignore .
-
-    # 删除忽略的文件
-    for file in $(cat ".svnignore" 2>/dev/null)
-    do
-        rm $file -Rf
-    done
 fi
+
+# 删除忽略的文件
+for file in $(cat ".svnignore" 2>/dev/null)
+do
+    rm $file -Rf
+done
+
 
 #####################################################
 # 执行 SVN 操作
@@ -140,11 +139,7 @@ if [[ $TRAVIS_TAG ]]; then
 	echo "发布新版本完成";
 
 else
-
-    cd $BUILT_DIR/svn/trunk
-
-	svn ci --no-auth-cache --username $WP_ORG_USERNAME --password $WP_ORG_PASSWORD -m "Update readme.txt"
+	svn ci --no-auth-cache --username $WP_ORG_USERNAME --password $WP_ORG_PASSWORD -m "update readme.txt"
 
 	echo "更新 assets 和 readme.txt 完成";
-
 fi
