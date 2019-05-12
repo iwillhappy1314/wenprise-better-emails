@@ -57,9 +57,9 @@ if [ -e "bin/build.sh" ]; then
 	bash bin/build.sh
 fi
 
-ls BUILT_DIR
-ls BUILT_DIR/svn
-ls BUILT_DIR/git
+ls $BUILT_DIR
+ls $BUILT_DIR/svn
+ls $BUILT_DIR/git
 
 #####################################################
 # 获取 Git 中的插件版本
@@ -95,14 +95,13 @@ cd $BUILT_DIR/svn/trunk
 if [ -e ".svnignore" ]; then
     echo "svn propset form .svnignore"
     svn propset -q -R svn:ignore -F .svnignore .
+
+    # 删除忽略的文件
+    for file in $(cat ".svnignore" 2>/dev/null)
+    do
+        rm $file -Rf
+    done
 fi
-
-# 删除忽略的文件
-for file in $(cat ".svnignore" 2>/dev/null)
-do
-    rm $file -Rf
-done
-
 
 #####################################################
 # 执行 SVN 操作
