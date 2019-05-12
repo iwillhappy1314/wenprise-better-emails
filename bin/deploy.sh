@@ -76,7 +76,7 @@ if [[ $TRAVIS_TAG ]]; then
     rsync -a --exclude=".svn" --checksum --delete ./git/ ./svn/trunk/
 else
     cp ./git/readme.txt ./svn/trunk/ -f
-    cp ./git/assets/* ./svn/assets/ -r
+    cp ./git/assets/* ./svn/assets/ -Rf
 fi
 
 # 同步完成后、移除 svn trunk 中的 .git 目录
