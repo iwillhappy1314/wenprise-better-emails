@@ -76,7 +76,7 @@ if [[ $TRAVIS_TAG ]]; then
     rsync -a --exclude=".svn" --checksum --delete ./git/ ./svn/trunk/
 else
     cp ./git/readme.txt ./svn/trunk/ -f
-    cp ./git/assets/. ./svn/assets/ -r
+    cp ./git/assets/* ./svn/assets/ -r
 fi
 
 # 同步完成后、移除 svn trunk 中的 .git 目录
@@ -139,7 +139,9 @@ if [[ $TRAVIS_TAG ]]; then
 	echo "发布新版本完成";
 
 else
-	svn ci --no-auth-cache --username $WP_ORG_USERNAME --password $WP_ORG_PASSWORD -m "update readme.txt"
+
+	svn ci --no-auth-cache --username $WP_ORG_USERNAME --password $WP_ORG_PASSWORD -m "Update readme.txt"
 
 	echo "更新 assets 和 readme.txt 完成";
+
 fi
