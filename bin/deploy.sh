@@ -58,8 +58,7 @@ if [ -e "bin/build.sh" ]; then
 fi
 
 ls $BUILT_DIR
-ls $BUILT_DIR/svn
-ls $BUILT_DIR/git
+ls $BUILT_DIR/svn -la
 
 #####################################################
 # 获取 Git 中的插件版本
@@ -141,6 +140,8 @@ if [[ $TRAVIS_TAG ]]; then
 	echo "发布新版本完成";
 
 else
+
+    cd $BUILT_DIR/svn/trunk
 
 	svn ci --no-auth-cache --username $WP_ORG_USERNAME --password $WP_ORG_PASSWORD -m "Update readme.txt"
 
