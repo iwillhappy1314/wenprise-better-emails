@@ -17,5 +17,10 @@
       "email": "iwillhappy1314@gmail.com"
     }
   ],
-  "minimum-stability": "beta"
+  "minimum-stability": "beta",
+  "config": {
+    "preferred-install": {
+      "*": "dist"
+    }
+  }
 }
