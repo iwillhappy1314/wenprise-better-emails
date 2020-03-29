@@ -3,7 +3,7 @@
 Plugin Name:        Wenprise Better Emails
 Plugin URI:         https://www.wpzhiku.com/wenprise-better-emails/
 Description:        使用 HTML 邮件，美化 WordPress 评论审核通知邮件，评论回复通知邮件。
-Version:            1.2
+Version:            1.3
 Author:             WordPress 智库
 Author URI:         https://www.wpzhiku.com/
 License:            MIT License

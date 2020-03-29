@@ -5,7 +5,7 @@ Tags: Email template, Email, 邮件模版
 Requires at least: 4.7
 Requires PHP: 5.6.0
 Tested up to: 5.3
-Stable tag: 1.2
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,6 +37,9 @@ Wenprise Better Emails 插件使用了 HTML 邮件的方式，美化了 WordPres
 3. 评论有回复时，通知评论者的邮件。
 
 == Changelog ==
+
+= 1.3 =
+* 使用严格比较模式
 
 = 1.1 =
 * Bugfix

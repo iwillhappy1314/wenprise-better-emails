@@ -18,7 +18,7 @@ add_action('wp_insert_comment', 'wprs_comment_notification', 99, 2);
  */
 add_filter('comment_notification_headers', function ($message_headers, $comment_ID)
 {
-    return "Content-Type: text/html; charset=\"" . get_option('blog_charset') . "\"\n";
+    return 'Content-Type: text/html; charset="' . get_option('blog_charset') . "\"\n";
 }, 10, 3);
 
 
@@ -32,9 +32,7 @@ add_filter('comment_notification_text', function ($notify_message, $comment_ID)
         'comment_id'     => $comment_ID,
     ], WPRS_EMAIL_PATH . 'templates', false);
 
-    $message = wprs_render_email($html);
-
-    return $message;
+    return wprs_render_email($html);
 }, 10, 3);
 
 
@@ -45,7 +43,7 @@ add_filter('comment_notification_text', function ($notify_message, $comment_ID)
  */
 add_filter('comment_moderation_headers', function ($message_headers, $comment_ID)
 {
-    return "Content-Type: text/html; charset=\"" . get_option('blog_charset') . "\"\n";
+    return 'Content-Type: text/html; charset="' . get_option('blog_charset') . "\"\n";
 }, 10, 3);
 
 
@@ -60,9 +58,7 @@ add_filter('comment_moderation_text', function ($notify_message, $comment_ID)
         'comment_id'     => $comment_ID,
     ], WPRS_EMAIL_PATH . 'templates', false);
 
-    $message = wprs_render_email($html);
-
-    return $message;
+    return wprs_render_email($html);
 }, 10, 3);
 
 
@@ -75,16 +71,15 @@ add_filter('comment_moderation_text', function ($notify_message, $comment_ID)
 function wprs_comment_notification($comment_id, $comment)
 {
 
-    if ($comment->comment_approved == 1 && $comment->comment_parent > 0) {
+    if ((int)$comment->comment_approved === 1 && $comment->comment_parent > 0) {
 
         $comment_parent_author_email = get_comment_author_email($comment->comment_parent);
 
         $html = wprs_render_template('user/comment', '', [
             'comment_id' => $comment_id,
-            'comment_id' => $comment_id,
         ], WPRS_EMAIL_PATH . 'templates', false);
 
-        $headers = "Content-Type: text/html; charset=\"" . get_option('blog_charset') . "\"\n";
+        $headers = 'Content-Type: text/html; charset="' . get_option('blog_charset') . "\"\n";
 
         $subject = '你在 [' . get_option('blogname') . '] 上的评论有了新回复。';
 
@@ -112,12 +107,10 @@ function wprs_render_email($html, $css = null)
         $css = file_get_contents(WPRS_EMAIL_PATH . 'templates/css/styles.css');
     }
 
-    $message = $cssToInlineStyles->convert(
+    return $cssToInlineStyles->convert(
         $html,
         $css
     );
-
-    return $message;
 }
 
 
@@ -131,7 +124,7 @@ function wprs_comment_status_update($comment_id, $comment_status)
 {
     $comment = get_comment($comment_id);
 
-    if ($comment_status == 'approve') {
+    if ($comment_status === 'approve') {
         wprs_comment_notification($comment->comment_ID, $comment);
     }
 }
@@ -186,7 +179,7 @@ add_filter('comment_form_submit_field', function ($submitField)
  */
 add_action('comment_post', function ($comment_id)
 {
-    $value = (isset($_POST[ 'wprs_subscribe_to_comment' ]) && $_POST[ 'wprs_subscribe_to_comment' ] == 'on') ? 'on' : 'off';
+    $value = (isset($_POST[ 'wprs_subscribe_to_comment' ]) && $_POST[ 'wprs_subscribe_to_comment' ] === 'on') ? 'on' : 'off';
 
     return add_comment_meta($comment_id, 'wprs_subscribe_to_comment', $value, true);
 });
@@ -221,9 +214,7 @@ function wprs_get_unsubscribe_link($comment)
         'key'        => $key,
     ];
 
-    $uri = site_url('/wprs-better-email/unsubscribe?' . http_build_query($params));
-
-    return $uri;
+    return site_url('/wprs-better-email/unsubscribe?' . http_build_query($params));
 }
 
 
@@ -241,7 +232,7 @@ add_action('init', function ()
         $user_key = filter_input(INPUT_GET, 'key', FILTER_SANITIZE_STRING);
         $real_key = wprs_secret_key($comment_id);
 
-        if ( ! $comment || $user_key != $real_key) {
+        if ( ! $comment || $user_key !== $real_key) {
             echo 'Invalid request.';
             exit;
         }

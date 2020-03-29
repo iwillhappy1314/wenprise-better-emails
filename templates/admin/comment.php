@@ -64,7 +64,7 @@ $comment_content = wp_specialchars_decode( $comment->comment_content );
                                     <td class="content-block">
 			                            <?php printf( _n('Currently %s comment is waiting for approval. Please visit the moderation panel:',
 				                            'Currently %s comments are waiting for approval. Please visit the moderation panel:', $comments_waiting), number_format_i18n($comments_waiting) ); ?>
-			                            <?= admin_url( "edit-comments.php?comment_status=moderated#wpbody-content" ); ?>
+			                            <?= admin_url('edit-comments.php?comment_status=moderated#wpbody-content'); ?>
                                     </td>
                                 </tr>
                             </table>
